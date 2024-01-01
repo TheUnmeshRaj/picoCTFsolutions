@@ -1,1 +1,31 @@
 This folder contains solution for picoCTF Transformation problem:
+
+Python code: 
+
+flag = ['灩', '捯', '䍔', '䙻', 'ㄶ', '形', "楴", '獟', '楮', '獴', '㌴', '摟', '潦', '弸', '彤', '㔲', '挶', '戹', '㍽']
+
+result = ''
+result2=''
+for i in range(len(flag)):
+    for j in range(126):
+        if 0 < ord(flag[i]) - (j << 8) <= 126:
+            result += chr(j) + chr(ord(flag[i]) - (j << 8))
+            result2 +=(chr(j) + chr(ord(flag[i]) - (j << 8)))
+print(result)
+print(result2)
+
+Java code:
+
+public class Transformation {
+    public static void main (String[] args){
+        int sum[] = {28777, 25455, 17236, 18043, 12598, 24418, 26996, 29535, 26990, 29556, 13108, 25695, 28518, 24376, 24368, 13411, 12343, 13872, 25725};
+        for(int i = 0; i < sum.length; i++){
+            for(int j= 0; j <= 126; j++){
+                if((sum[i] - (j << 8)) <= 126 && (sum[i] - (j << 8)) >= 0){
+                    String ans = Character.toString((char) j) + Character.toString((char) (sum[i] - (j << 8)));
+                    System.out.print(ans);
+                }
+            }
+        }
+    }
+}
